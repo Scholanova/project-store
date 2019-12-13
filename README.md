@@ -17,6 +17,32 @@ On parle d'un projet de gestion d'inventaire de magasins.
 - [ ] Pouvoir récuppérer la liste de tous les objets d'un magasin 
 - [ ] Pouvoir récuppérer la valeur du stock d'un magasin comme propriété d'un magasin
 
+
+#### CREATE 
+
+Un objet de stock se créé sur la route `/stores/{store_id}/stocks`
+
+Un objet de stock doit avoir pour être valid : 
+- la propriété `name` qui ne doit pas être vide
+- la propriété `type` qui vaut soit `Fruit` soit `Nail`
+- la propriété `value` qui est en centimes d'euro et doit être `> 0` et être un `Int`
+- la propriété `store_id` qui doit pointer vers un magasin qui existe
+
+#### GET
+
+ Un objet de stock se récupère sur la route `/stores/{store_id}/stocks/{id}`.
+ Il faut vérifier que l'objet de stock appartient bien au magasin dont l'id est dans l'url.
+ Si ce n'est pas le cas, renvoyer `Unauthorized` ou `404`.
+ 
+#### UPDATE
+
+Il faut à la fois vérifier que l'objet soit valide et le règle d'appartenance au magasin de l'url.
+ 
+#### DELETE
+
+Il faut à la fois vérifier la règle d'appartenance au magasin de l'url.
+ 
+ 
 ## Règles du jeu : 
 
 - Pour chacune des fonctionnalités, il faut qu'elle soit testée.
